@@ -27,6 +27,7 @@ showpass.addEventListener('click', () => {
         password.setAttribute("type", "text") :
         password.setAttribute("type", "password");
 });
+var num = 0;
 let videoBtn = document.querySelectorAll('.vid-btn');
 videoBtn.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -35,4 +36,92 @@ videoBtn.forEach(btn => {
         let src = btn.getAttribute('data-src');
         document.querySelector('#video-slider').src = src;
     });
+});
+
+/* chuyen dong video */
+
+var temp = 0;
+var speed = 20000;
+
+function rotateVideos() {
+    videoBtn = document.querySelectorAll('.vid-btn');
+    num++;
+    if (num >= videoBtn.length) {
+        num = -1;
+        rotateVideos();
+    } else {
+        document.querySelector('.controls .active').classList.remove('active');
+        document.querySelectorAll('.vid-btn').item(num).classList.add('active')
+        document.querySelector('#video-slider').src = videoBtn.item(num).getAttribute('data-src');
+        speed = videoBtn.item(num).getAttribute('data-time');
+        setTimeout(function() { rotateVideos() }, speed);
+    }
+}
+
+if (window.addEventListener) {
+    window.addEventListener('load', function() { setTimeout(function() { rotateVideos() }, speed) }, false);
+} else {
+    if (window.attachEvent) {
+        window.attachEvent('onload', function() { setTimeout(function() { rotateVideos() }, speed) });
+    }
+}
+
+/* more rooms */
+let moreBtn = document.querySelectorAll('.more-btn');
+moreBtn.forEach(btn2 => {
+    btn2.addEventListener('click', () => {
+        var n = 3;
+        let noactive = document.querySelectorAll(".box.noactive");
+        if (noactive.length < 4) {
+            n = noactive.length;
+            btn2.classList.add('clicked');
+        };
+        for (let i = 0; i < n; i++) {
+            noactive.item(i).classList.remove('noactive');
+            noactive.item(i).classList.add('active');
+
+        };
+    });
+});
+var swiper = new Swiper(".review-slider", {
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        },
+    },
+});
+
+var swiper = new Swiper(".brand-slider", {
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        450: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        991: {
+            slidesPerView: 4,
+        },
+        1200: {
+            slidesPerView: 5,
+        },
+    },
 });

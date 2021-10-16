@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Ko ro -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- swiper-bundle -->
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- my css -->
+    <link rel="stylesheet" href="Css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <div class="logo">
+            <a href="#" class="navbar-header">
+                <img class="nav-item float-left logo1" src="Image/icon/logo/logoWhite.png" alt="" style="height: 50px;">
+                <img class="nav-item d-block float-left" src="Image/icon/logo/LogoClassicWhite.png" alt="" style="height: 50px;">
+            </a>
+        </div>
+        <nav id="nav-bar">
+            <a href="#home">Home</a>
+            <a href="#book">Book</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#services">Services</a>
+            <a href="#review">Review</a>
+            <a href="#contact">Contact</a>
+            <a href="#aboutus">About us</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+    </header>
+    <div class="login-form-container">
+        <div id="khung_ngoai" class="khung_ngoai center-block">
+            <div class="khung_sign">
+                <div class="khung_singin">
+                    <h4 class="text signin float-left">Sign in</h4>
+                </div>
+                <div class="khung_singup">
+                    <h1 class="fas fa-times float-right" id="login-close"></h1>
+                </div>
+            </div>
+            <form id="login_form" action="#" method="POST">
+                <div class="khung_user">
+                    <p id="label_user" class="label_pass float-left">Your user name</p>
+                    <input id="input_user" name="user" class="input float-left" placeholder="User name or email" type="user" value="">
+                </div>
+                <div class="khung_pass">
+                    <p id="label_pass" class="label_pass float-left">Your password</p>
+                    <input id="input_pass" name="password" class="input" placeholder="******" type="password" value="">
+                    <i class="fa fa-eye show-password" id="showpass"></i>
+                </div>
+                <div class="khung_check_save">
+                    <a id="text_forgot" class="text forgot float-left" style="margin-right: 10px;" href="#">Forgot?</a>
+                </div>
+                <!-- <div id="g-recaptcha" class="g-recaptcha" data-sitekey=""></div> -->
+                <div class="khung_login">
+                    <button type="submit" name="submit" id="btn_login" class="btn_login">
+                    Login
+                </button>
+                </div>
+            </form>
+            <div id="khung_noti" class="khung_noti error">
+                <p id="label_noti_error"></p>
+            </div>
+        </div>
+    </div>
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Wellcome to Classic Hotel</h3>
+            <br>
+            <p>Make your reservation today</p>
+            <br>
+            <a href="#book" class="btn">Book now</a>
+        </div>
+        <div class="controls">
+            <span class="vid-btn active" data-src="Video/vid-1.mp4"></span>
+            <span class="vid-btn" data-src="Video/vid-2.mp4"></span>
+            <span class="vid-btn" data-src="Video/vid-3.mp4"></span>
+            <span class="vid-btn" data-src="Video/vid-4.mp4"></span>
+            <span class="vid-btn" data-src="Video/vid-5.mp4"></span>
+        </div>
+        <div class="video-container">
+            <video src="Video/vid-1.mp4" id="video-slider" loop autoplay muted></video>
+        </div>
+    </section>
+    <section class="book" id="book"></section>
+    <div class="container" style="margin-top: 100px;">
+        <h3>Navbar With Dropdown</h3>
+        <p>This example adds a dropdown menu in the navbar.</p>
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h3>Navbar With Dropdown</h3>
+        <p>This example adds a dropdown menu in the navbar.</p>
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h3>Navbar With Dropdown</h3>
+        <p>This example adds a dropdown menu in the navbar.</p>
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h3>Navbar With Dropdown</h3>
+        <p>This example adds a dropdown menu in the navbar.</p>
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h3>Navbar With Dropdown</h3>
+        <p>This example adds a dropdown menu in the navbar.</p>
+    </div>
+    <footer>
+        <section class="footer" id="aboutus">
+
+            <div class="box-container">
+
+                <div class="box">
+                    <h3>about us</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quas magni pariatur est accusantium voluptas enim nemo facilis sit debitis.</p>
+                </div>
+                <div class="box">
+                    <h3>quick links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#book">Book</a>
+                    <a href="#rooms">Rooms</a>
+                    <a href="#services">Services</a>
+                    <a href="#review">Review</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#aboutus">About us</a>
+                </div>
+                <div class="box follow">
+                    <h3>follow us</h3>
+                    <a href="#">facebook</a>
+                    <a href="#">github</a>
+                </div>
+            </div>
+            <h1 class="credit"> created by <span> MVT1927 </span></h1>
+        </section>
+    </footer>
+    <script src="Js/script.js"></script>
+</body>
+
+</html>

@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome-pro-5.15.3-web/css/all.css">
+    <!-- <script src="https://raw.githubusercontent.com/viettel3g1000/font/main/Js/6e54d5948f.js" crossorigin="anonymous"></script> -->
     <!-- my css -->
     <link rel="stylesheet" href="Css/style.css">
     <title>Document</title>
@@ -88,37 +90,406 @@
             <a href="#book" class="btn">Book now</a>
         </div>
         <div class="controls">
-            <span class="vid-btn active" data-src="Video/vid-1.mp4"></span>
-            <span class="vid-btn" data-src="Video/vid-2.mp4"></span>
-            <span class="vid-btn" data-src="Video/vid-3.mp4"></span>
-            <span class="vid-btn" data-src="Video/vid-4.mp4"></span>
-            <span class="vid-btn" data-src="Video/vid-5.mp4"></span>
+            <span class="vid-btn active" data-src="Video/vid-1.mp4" data-time="40000"></span>
+            <span class="vid-btn" data-src="Video/vid-2.mp4" data-time="7000"></span>
+            <span class="vid-btn" data-src="Video/vid-3.mp4" data-time="32000"></span>
+            <span class="vid-btn" data-src="Video/vid-4.mp4" data-time="20000"></span>
+            <span class="vid-btn" data-src="Video/vid-5.mp4" data-time="11000"></span>
         </div>
         <div class="video-container">
             <video src="Video/vid-1.mp4" id="video-slider" loop autoplay muted></video>
         </div>
     </section>
-    <section class="book" id="book"></section>
-    <div class="container" style="margin-top: 100px;">
-        <h3>Navbar With Dropdown</h3>
-        <p>This example adds a dropdown menu in the navbar.</p>
-    </div>
-    <div class="container" style="margin-top: 100px;">
-        <h3>Navbar With Dropdown</h3>
-        <p>This example adds a dropdown menu in the navbar.</p>
-    </div>
-    <div class="container" style="margin-top: 100px;">
-        <h3>Navbar With Dropdown</h3>
-        <p>This example adds a dropdown menu in the navbar.</p>
-    </div>
-    <div class="container" style="margin-top: 100px;">
-        <h3>Navbar With Dropdown</h3>
-        <p>This example adds a dropdown menu in the navbar.</p>
-    </div>
-    <div class="container" style="margin-top: 100px;">
-        <h3>Navbar With Dropdown</h3>
-        <p>This example adds a dropdown menu in the navbar.</p>
-    </div>
+    <section class="book" id="book">
+        <br>
+        <h1 class="heading text-center">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>k</span>
+            <span class="space"></span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+            <BR></BR>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img class="image col-12" src="Image/5244516.png" alt="">
+            </div>
+            <form action="" class="">
+                <div class="inputBox">
+                    <h3>What your full name</h3>
+                    <input type="text" placeholder="Your name">
+                </div>
+                <div class="inputBox">
+                    <h3>Phone</h3>
+                    <input type="number" placeholder="Your Phone">
+                </div>
+                <div class="inputBox">
+                    <h3>How many</h3>
+                    <input type="number" placeholder="Number of guests">
+                </div>
+                <div class="inputBox">
+                    <h3>Arrivals</h3>
+                    <input type="date">
+                </div>
+                <input type="submit" class="btn" value="book now">
+            </form>
+        </div>
+    </section>
+    <section class="rooms" id="rooms">
+        <br>
+        <h1 class="heading text-center">
+            <span>r</span>
+            <span>o</span>
+            <span>o</span>
+            <span>m</span>
+            <span>s</span>
+            <BR></BR>
+        </h1>
+        <div class="box-container">
+            <div class="box active">
+                <img src="Image/Rooms/room-1.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=1" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box active">
+                <img src="Image/Rooms/room-2.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=2" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box active">
+                <img src="Image/Rooms/room-3.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=3" class="btn">book now</a>
+                </div>
+            </div>
+
+            <div class="box noactive">
+                <img src="Image/Rooms/room-4.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=4" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box noactive">
+                <img src="Image/Rooms/room-5.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=5" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box noactive">
+                <img src="Image/Rooms/room-6.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=6" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box noactive">
+                <img src="Image/Rooms/room-6.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=6" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box noactive">
+                <img src="Image/Rooms/room-6.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
+                    <a href="#book?idroom=6" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box noactive">
+                <img src="Image/Rooms/room-6.jpg" alt="">
+                <div class="content">
+                    <h3>
+                        <i></i> room
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="price"> 199.000₫ <span> 300.000₫ </span> </div>
+                    <a href="#book?idroom=6" class="btn">book now</a>
+                </div>
+            </div>
+            <h1 class="more-rooms col-12 text-center">
+                <i class="fas fa-chevron-down more-btn"></i>
+            </h1>
+        </div>
+    </section>
+    <section class="services" id="services">
+        <br>
+        <h1 class="heading text-center">
+            <span>s</span>
+            <span>e</span>
+            <span>r</span>
+            <span>v</span>
+            <span>i</span>
+            <span>e</span>
+            <span>s</span>
+            <BR></BR>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <i class="fad fa-hotel"></i>
+                <h3>affordable hotels</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+            <div class="box">
+                <i class="fad fa-utensils-alt"></i>
+                <h3>food and drinks</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+            <div class="box">
+                <i class="fad fa-car"></i>
+                <h3>Car rental services</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+            <div class="box">
+                <i class="fad fa-concierge-bell"></i>
+                <h3>Room service (24-hour)</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+            <div class="box">
+                <i class="fad fa-washer"></i>
+                <h3>Laundry service</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+            <div class="box">
+                <i class="fad fa-briefcase-medical"></i>
+                <h3>Doctor on call</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+            </div>
+        </div>
+    </section>
+    <section class="review" id="review">
+
+        <h1 class="heading text-center">
+            <span>r</span>
+            <span>e</span>
+            <span>v</span>
+            <span>i</span>
+            <span>e</span>
+            <span>w</span>
+            <BR></BR>
+        </h1>
+        <div class="swiper-container review-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Image/mvt1927.jpg" alt="">
+                        <h3>MVT1927</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa adipisci quisquam sunt nesciunt fugiat odit minus illum asperiores dolorum enim sint quod ipsam distinctio molestias consectetur ducimus beatae, reprehenderit exercitationem!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fal fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Image/mvt1927.jpg" alt="">
+                        <h3>MVT1927</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa adipisci quisquam sunt nesciunt fugiat odit minus illum asperiores dolorum enim sint quod ipsam distinctio molestias consectetur ducimus beatae, reprehenderit exercitationem!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fal fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Image/mvt1927.jpg" alt="">
+                        <h3>MVT1927</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa adipisci quisquam sunt nesciunt fugiat odit minus illum asperiores dolorum enim sint quod ipsam distinctio molestias consectetur ducimus beatae, reprehenderit exercitationem!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fal fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Image/mvt1927.jpg" alt="">
+                        <h3>MVT1927</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa adipisci quisquam sunt nesciunt fugiat odit minus illum asperiores dolorum enim sint quod ipsam distinctio molestias consectetur ducimus beatae, reprehenderit exercitationem!</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fal fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h1 class="heading text-center">
+            <span>c</span>
+            <span>o</span>
+            <span>n</span>
+            <span>t</span>
+            <span>a</span>
+            <span>c</span>
+            <span>t</span>
+            <i class="fas fa-font-awesome-logo-full"></i>
+            <BR></BR>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="Image/contact-banner.svg" alt="">
+            </div>
+            <form action="">
+                <div class="inputBox">
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="inputBox">
+                    <input type="number" placeholder="Number">
+                    <input type="text" placeholder="Subject">
+                </div>
+                <textarea placeholder="Message" name="" id="" cols="30" rows="10"></textarea>
+                <input type="submit" class="btn" value="send message">
+            </form>
+        </div>
+    </section>
+    <section class="brand-container">
+        <div class="swiper-container brand-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide Github ">
+                    <a href="https://github.com/"><img src="Image/icon/logo/GitHub-Mark/svg/github-icon-1-logo-svg-vector.svg" alt="Github logo"></a>
+                </div>
+                <div class="swiper-slide FontAwesome">
+                    <a href="https://fontawesome.com/"><img src="Image/icon/logo/font-awesome/font-awesome-brands.svg" alt="FontAwesome logo"></a>
+                </div>
+                <div class="swiper-slide W3Schools">
+                    <a href="https://www.w3schools.com/"><img src="Image/icon/logo/w3schools/W3Schools_logo.svg" alt="W3Schools logo"></a>
+                </div>
+                <div class="swiper-slide Bootstrap">
+                    <a href="https://getbootstrap.com/"><img src="Image/icon/logo/bootstrap-4/bootstrap-4-logo-svgrepo-com.svg" alt="Bootstrap logo"></a>
+                </div>
+                <div class="swiper-slide Swiper">
+                    <a href="https://swiperjs.com/"><img src="Image/icon/logo/swiper/swiper-logo.svg" alt="Swiper logo"></a>
+                </div>
+                <div class="swiper-slide stackoverflow">
+                    <a href="https://stackoverflow.com/"><img src="Image/icon/logo/stackoverflow/logo-stackoverflow.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer>
         <section class="footer" id="aboutus">
 
@@ -126,7 +497,13 @@
 
                 <div class="box">
                     <h3>about us</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quas magni pariatur est accusantium voluptas enim nemo facilis sit debitis.</p>
+                    <p>Thank for : </p>
+                    <a href="https://github.com/"><img src="Image/icon/logo/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png" alt="Github logo"><label for="Github">Github</label></a>
+                    <a href="https://fontawesome.com/"><img src="Image/icon/logo/font-awesome/font-awesome-brands.svg" alt="FontAwesome logo"><label for="FontAwesome">Font Awesome</label></a>
+                    <a href="https://www.w3schools.com/"><img src="Image/icon/logo/w3schools/W3Schools_logo.svg" alt="W3Schools logo"><label for="W3Schools">W3Schools</label></a>
+                    <a href="https://getbootstrap.com/"><img src="Image/icon/logo/bootstrap-4/bootstrap-4-logo-svgrepo-com.svg" alt="Bootstrap logo"><label for="Bootstrap">Bootstrap</label></a>
+                    <a href="https://swiperjs.com/"><img src="Image/icon/logo/swiper/swiper-logo.svg" alt="Swiper logo"><label for="Swiper">Swiper</label></a>
+                    <a href="https://stackoverflow.com/"><img src="Image/icon/logo/stackoverflow/logo-stackoverflow.svg" alt="Stackoverflow"><label for="stackoverflow">stack<span>overflow</span></label></a>
                 </div>
                 <div class="box">
                     <h3>quick links</h3>
@@ -140,13 +517,14 @@
                 </div>
                 <div class="box follow">
                     <h3>follow us</h3>
-                    <a href="#">facebook</a>
-                    <a href="#">github</a>
+                    <a href="https://www.facebook.com/Mvt1927/">facebook</a>
+                    <a href="https://github.com/viettel3g1000">github</a>
                 </div>
             </div>
             <h1 class="credit"> created by <span> MVT1927 </span></h1>
         </section>
     </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="Js/script.js"></script>
 </body>
 
