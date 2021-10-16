@@ -1,0 +1,6 @@
+bootstrap-5.1.0-dist/
+.vscode/
+.cmd
+.cpp
+.bat
+.gitinore
