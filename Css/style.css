@@ -82,13 +82,12 @@ header .icons i {
 /* Login container */
 
 .login-form-container {
-    position: fixed;
-    top: -120%;
+    position: relative;
+    top: 0;
     left: 0;
-    z-index: 10000;
     min-height: 100vh;
     width: 100%;
-    background: rgba(0, 0, 0, .7);
+    /*  background: rgba(0, 0, 0, .7); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,7 +204,6 @@ header .icons i {
 
 .login-form-container .khung_singin {
     position: relative;
-    float: left;
     height: 100%;
     width: 50%;
     margin: auto;
@@ -259,7 +257,7 @@ header .icons i {
     float: left;
 }
 
-.login-form-container .khung_check_save {
+.login-form-container .khung_forgot {
     width: 95%;
     left: 10px;
     float: left;
@@ -377,7 +375,6 @@ header .icons i {
 /* css sử lý thông báo */
 
 .login-form-container .khung_noti {
-    display: none;
     position: relative;
     float: left;
     max-height: 50px;
@@ -396,8 +393,18 @@ header .icons i {
     color: red;
 }
 
-.login-form-container input.error {
-    border: 1px solid rgba(255, 0, 0, 0.788);
+.login-form-container form p span {
+    display: none;
+}
+
+.login-form-container form .error p span {
+    display: inline;
+}
+
+#rc-anchor-container,
+.login-form-container .error input {
+    border: 1px solid rgba(255, 0, 0, 0.788) !important;
+    border-radius: 3px;
 }
 
 

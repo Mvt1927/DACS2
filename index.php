@@ -1,3 +1,14 @@
+<?php
+session_start();
+$siteKey = '';
+$secret = '';
+require_once 'config.php';
+if ($siteKey == '' && is_readable('config.php')) {
+    $config = include 'config.php';
+    $siteKey = $config['v2']['site'];
+    $secret = $config['v2']['secret'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Ko ro -->
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- bootstrap 4 -->
@@ -19,6 +30,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="fontawesome-pro-5.15.3-web/css/all.css">
     <!-- <script src="https://raw.githubusercontent.com/viettel3g1000/font/main/Js/6e54d5948f.js" crossorigin="anonymous"></script> -->
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <!-- my css -->
     <link rel="stylesheet" href="Css/style.css">
     <title>Classic Hotel</title>
@@ -46,7 +59,7 @@
             <i class="fas fa-user" id="login-btn"></i>
         </div>
     </header>
-    <div class="login-form-container">
+    <!-- <div class="login-form-container">
         <div id="khung_ngoai" class="khung_ngoai center-block">
             <div class="khung_sign">
                 <div class="khung_singin">
@@ -56,31 +69,31 @@
                     <h1 class="fas fa-times float-right" id="login-close"></h1>
                 </div>
             </div>
-            <form id="login_form" action="#" method="POST">
+            <form id="login_form" action="login.php" method="POST">
                 <div class="khung_user">
                     <p id="label_user" class="label_pass float-left">Your user name</p>
-                    <input id="input_user" name="user" class="input float-left" placeholder="User name or email" type="user" value="">
+                    <input id="input_user" name="input_user" class="input float-left" placeholder="User name or email" type="user" value="">
                 </div>
                 <div class="khung_pass">
                     <p id="label_pass" class="label_pass float-left">Your password</p>
-                    <input id="input_pass" name="password" class="input" placeholder="******" type="password" value="">
+                    <input id="input_pass" name="input_password" class="input" placeholder="******" type="password" value="">
                     <i class="fa fa-eye show-password" id="showpass"></i>
                 </div>
                 <div class="khung_check_save">
                     <a id="text_forgot" class="text forgot float-left" style="margin-right: 10px;" href="#">Forgot?</a>
                 </div>
-                <!-- <div id="g-recaptcha" class="g-recaptcha" data-sitekey=""></div> -->
+                <div id="g-recaptcha" class="g-recaptcha" data-sitekey="<?php echo $siteKey ?>"></div>
                 <div class="khung_login">
-                    <button type="submit" name="submit" id="btn_login" class="btn_login">
-                    Login
-                </button>
+                    <button type="submit" name="btn_login_submit" id="btn_login" class="btn_login">
+                        Login
+                    </button>
                 </div>
             </form>
             <div id="khung_noti" class="khung_noti error">
                 <p id="label_noti_error"></p>
             </div>
         </div>
-    </div>
+    </div> -->
     <section class="home" id="home">
         <div class="content">
             <h3>Wellcome to Classic Hotel</h3>
