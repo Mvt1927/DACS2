@@ -7,11 +7,11 @@ var phone_box = document.querySelector('#input_phone_box');
 if (name_box != null || phone_box != null) {
     phone_box.addEventListener('click', () => {
         phone_box.classList.remove('error');
-        name_box_box.classList.remove('error');
+        name_box.classList.remove('error');
     });
-    name_box_box.addEventListener('click', () => {
+    name_box.addEventListener('click', () => {
         phone_box.classList.remove('error');
-        name_box_box.classList.remove('error');
+        name_box.classList.remove('error');
     });
 };
 
@@ -19,7 +19,6 @@ function checkBook() {
     if (name_box != null || phone_box != null) {
         if (book_name.value != "") {
             if (book_phone.value != "") {
-                alert('Thank you for your booking');
                 return true;
             } else {
                 if (!phone_box.classList.contains('error')) {
@@ -29,8 +28,8 @@ function checkBook() {
                 return false;
             }
         } else {
-            if (!phone_box.classList.contains('error')) {
-                phone_box.classList.toggle('error');
+            if (!name_box.classList.contains('error')) {
+                name_box.classList.toggle('error');
             };
             alert('Your Full Name cannot be blank');
             return false;

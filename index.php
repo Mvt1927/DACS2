@@ -100,19 +100,19 @@ $date = getdate();
             <form action="bookroom.php" id="form_book_room" method="POST" onsubmit="return checkBook()">
                 <div class="inputBox" id="input_name_box">
                     <h3>What your full name <span>*</span></h3>
-                    <input type="text" id="book_input_name" placeholder="Your name">
+                    <input type="text" id="book_input_name" name="book_input_name" placeholder="Your name">
                 </div>
                 <div class="inputBox" id="input_phone_box">
                     <h3>Phone <span>*</span></h3>
-                    <input type="number" id="book_input_phone" placeholder="Your Phone" min="0" max="99999999999">
+                    <input type="number" id="book_input_phone" name="book_input_phone" placeholder="Your Phone" min="0" max="99999999999">
                 </div>
                 <div class="inputBox">
                     <h3>How many</h3>
-                    <input type="number" id="book_input_num" placeholder="Number of guests" min="1" max="50" value="1">
+                    <input type="number" id="book_input_num" name="book_input_num" placeholder="Number of guests" min="1" max="50" value="1">
                 </div>
                 <div class="inputBox">
                     <h3>Arrivals</h3>
-                    <input type="date" id="book_input_name" min="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>" value="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>">
+                    <input type="date" id="book_input_date" name="book_input_date"  min="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>" value="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>">
                 </div>
                 <div>
                     <div class="g-recaptcha" data-sitekey="<?php echo $siteKey ?>" data-callback="onSubmit" data-size="invisible"></div>
@@ -233,7 +233,7 @@ $date = getdate();
             <span>w</span>
             <BR></BR>
         </h1>
-        <div class="swiper-container review-slider">
+        <div class="swiper review-slider">
 
             <div class="swiper-wrapper">
 
@@ -327,7 +327,7 @@ $date = getdate();
         </div>
     </section>
     <section class="brand-container">
-        <div class="swiper-container brand-slider">
+        <div class="swiper brand-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide Github ">
                     <a href="https://github.com/"><img src="Image/icon/logo/GitHub-Mark/svg/github-icon-1-logo-svg-vector.svg" alt="Github logo"></a>

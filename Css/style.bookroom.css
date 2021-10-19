@@ -1,0 +1,34 @@
+h1+h3 {
+    margin-top: 2rem;
+}
+
+.bookroom {
+    height: 80vh;
+}
+
+.btn {
+    margin-top: 5rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: var(--blue);
+    border-radius: .2rem;
+    border: solid .2rem var(--blue);
+    float: right;
+}
+
+.btn:hover {
+    color: var(--blue);
+    background-color: var(--blue-0);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    background-color: rgba(100, 201, 255, 0.315);
+}
+
+table>tr>th {
+    padding: 0rem;
+}
