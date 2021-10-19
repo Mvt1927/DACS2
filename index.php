@@ -3,11 +3,13 @@ session_start();
 $siteKey = '';
 $secret = '';
 require_once 'config.php';
+require_once('vendor/google/recaptcha/src/autoload.php');
 if ($siteKey == '' && is_readable('config.php')) {
     $config = include 'config.php';
-    $siteKey = $config['v2']['site'];
-    $secret = $config['v2']['secret'];
+    $siteKey = $config['v3']['site'];
+    $secret = $config['v3']['secret'];
 }
+$date = getdate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +33,7 @@ if ($siteKey == '' && is_readable('config.php')) {
     <link rel="stylesheet" type="text/css" href="fontawesome-pro-5.15.3-web/css/all.css">
     <!-- <script src="https://raw.githubusercontent.com/viettel3g1000/font/main/Js/6e54d5948f.js" crossorigin="anonymous"></script> -->
     <!-- recaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- my css -->
     <link rel="stylesheet" href="Css/style.css">
     <title>Classic Hotel</title>
@@ -59,41 +61,6 @@ if ($siteKey == '' && is_readable('config.php')) {
             <i class="fas fa-user" id="login-btn"></i>
         </div>
     </header>
-    <!-- <div class="login-form-container">
-        <div id="khung_ngoai" class="khung_ngoai center-block">
-            <div class="khung_sign">
-                <div class="khung_singin">
-                    <h4 class="text signin float-left">Sign in</h4>
-                </div>
-                <div class="khung_singup">
-                    <h1 class="fas fa-times float-right" id="login-close"></h1>
-                </div>
-            </div>
-            <form id="login_form" action="login.php" method="POST">
-                <div class="khung_user">
-                    <p id="label_user" class="label_pass float-left">Your user name</p>
-                    <input id="input_user" name="input_user" class="input float-left" placeholder="User name or email" type="user" value="">
-                </div>
-                <div class="khung_pass">
-                    <p id="label_pass" class="label_pass float-left">Your password</p>
-                    <input id="input_pass" name="input_password" class="input" placeholder="******" type="password" value="">
-                    <i class="fa fa-eye show-password" id="showpass"></i>
-                </div>
-                <div class="khung_check_save">
-                    <a id="text_forgot" class="text forgot float-left" style="margin-right: 10px;" href="#">Forgot?</a>
-                </div>
-                <div id="g-recaptcha" class="g-recaptcha" data-sitekey="<?php echo $siteKey ?>"></div>
-                <div class="khung_login">
-                    <button type="submit" name="btn_login_submit" id="btn_login" class="btn_login">
-                        Login
-                    </button>
-                </div>
-            </form>
-            <div id="khung_noti" class="khung_noti error">
-                <p id="label_noti_error"></p>
-            </div>
-        </div>
-    </div> -->
     <section class="home" id="home">
         <div class="content">
             <h3>Wellcome to Classic Hotel</h3>
@@ -130,24 +97,27 @@ if ($siteKey == '' && is_readable('config.php')) {
             <div class="image">
                 <img class="image col-12" src="Image/5244516.png" alt="">
             </div>
-            <form action="" class="">
-                <div class="inputBox">
-                    <h3>What your full name</h3>
-                    <input type="text" placeholder="Your name">
+            <form action="bookroom.php" id="form_book_room" method="POST" onsubmit="return checkBook()">
+                <div class="inputBox" id="input_name_box">
+                    <h3>What your full name <span>*</span></h3>
+                    <input type="text" id="book_input_name" placeholder="Your name">
                 </div>
-                <div class="inputBox">
-                    <h3>Phone</h3>
-                    <input type="number" placeholder="Your Phone">
+                <div class="inputBox" id="input_phone_box">
+                    <h3>Phone <span>*</span></h3>
+                    <input type="number" id="book_input_phone" placeholder="Your Phone" min="0" max="99999999999">
                 </div>
                 <div class="inputBox">
                     <h3>How many</h3>
-                    <input type="number" placeholder="Number of guests">
+                    <input type="number" id="book_input_num" placeholder="Number of guests" min="1" max="50" value="1">
                 </div>
                 <div class="inputBox">
                     <h3>Arrivals</h3>
-                    <input type="date">
+                    <input type="date" id="book_input_name" min="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>" value="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>">
                 </div>
-                <input type="submit" class="btn" value="book now">
+                <div>
+                    <div class="g-recaptcha" data-sitekey="<?php echo $siteKey ?>" data-callback="onSubmit" data-size="invisible"></div>
+                </div>
+                <input type="submit" class="btn" name="btn_book_submit" id="btn_book_submit" value="book now">
             </form>
         </div>
     </section>
@@ -162,169 +132,46 @@ if ($siteKey == '' && is_readable('config.php')) {
             <BR></BR>
         </h1>
         <div class="box-container">
-            <div class="box active">
-                <img src="Image/Rooms/room-1.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
+            <?php
+            $roomsql = "SELECT * FROM `rooms`";
+            $roomrs = mysqli_query($conn, $roomsql);
+            $a = 0;
+            while ($roomrow = mysqli_fetch_array($roomrs)) {
+                $a++;
+            ?>
+                <div class="box <?php if ($a > 3) {
+                                    echo "no";
+                                } ?>active">
+                    <img src="<?php echo $roomrow['srcroom'] ?>" alt="idrooms_<?php echo $roomrow['idrooms'] ?>">
+                    <div class="content">
+                        <h3>
+                            <?php echo $roomrow['nameroom'];
+                            if ($roomrow['priceroom'] < $roomrow['defpriceroom']) {
+                                echo "<img alt=\"Sale icon\" src=\"Image/icon/icons_sale.gif\" style=\"height:32px;width:32px;float: right;\">";
+                            } ?>
+                        </h3>
+                        <p><?php echo $roomrow['inforoom'] ?></p>
+                        <div class="stars">
+                            <?php
+                            for ($i = 0; $i < 5; $i++) {
+                                if ($i < $roomrow['starroom']) {
+                                    echo "<i class=\"fas fa-star\"></i>";
+                                } else {
+                                    echo "<i class=\"fal fa-star\"></i>";
+                                }
+                            }
+                            ?>
+                        </div>
+                        <div class="price"><?php
+                                            echo $roomrow['priceroom'] . "₫";
+                                            if ($roomrow['priceroom'] < $roomrow['defpriceroom']) {
+                                                echo " <span>" . $roomrow['defpriceroom'] . "₫</span>";
+                                            }
+                                            ?> </div>
+                        <a href="?idroom=<?php echo $roomrow['idrooms']?>#book" class="btn">book now</a>
                     </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=1" class="btn">book now</a>
                 </div>
-            </div>
-            <div class="box active">
-                <img src="Image/Rooms/room-2.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=2" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box active">
-                <img src="Image/Rooms/room-3.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=3" class="btn">book now</a>
-                </div>
-            </div>
-
-            <div class="box noactive">
-                <img src="Image/Rooms/room-4.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=4" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box noactive">
-                <img src="Image/Rooms/room-5.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=5" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box noactive">
-                <img src="Image/Rooms/room-6.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=6" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box noactive">
-                <img src="Image/Rooms/room-6.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=6" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box noactive">
-                <img src="Image/Rooms/room-6.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span>300.000₫</span> </div>
-                    <a href="#book?idroom=6" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box noactive">
-                <img src="Image/Rooms/room-6.jpg" alt="">
-                <div class="content">
-                    <h3>
-                        <i></i> room
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fal fa-star"></i>
-                    </div>
-                    <div class="price"> 199.000₫ <span> 300.000₫ </span> </div>
-                    <a href="#book?idroom=6" class="btn">book now</a>
-                </div>
-            </div>
+            <?php } ?>
             <h1 class="more-rooms col-12 text-center">
                 <i class="fas fa-chevron-down more-btn"></i>
             </h1>
@@ -538,7 +385,9 @@ if ($siteKey == '' && is_readable('config.php')) {
         </section>
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="Js/bookroom.js"></script>
     <script src="Js/script.js"></script>
+    <!-- <script>alert('Thank you for your booking')</script> -->
 </body>
 
 </html>

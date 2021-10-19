@@ -82,12 +82,13 @@ header .icons i {
 /* Login container */
 
 .login-form-container {
-    position: relative;
-    top: 0;
+    position: fixed;
+    top: -120%;
     left: 0;
+    z-index: 10000;
     min-height: 100vh;
     width: 100%;
-    /*  background: rgba(0, 0, 0, .7); */
+    background: rgba(0, 0, 0, .7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -204,6 +205,7 @@ header .icons i {
 
 .login-form-container .khung_singin {
     position: relative;
+    float: left;
     height: 100%;
     width: 50%;
     margin: auto;
@@ -257,7 +259,7 @@ header .icons i {
     float: left;
 }
 
-.login-form-container .khung_forgot {
+.login-form-container .khung_check_save {
     width: 95%;
     left: 10px;
     float: left;
@@ -375,6 +377,7 @@ header .icons i {
 /* css sử lý thông báo */
 
 .login-form-container .khung_noti {
+    display: none;
     position: relative;
     float: left;
     max-height: 50px;
@@ -393,18 +396,8 @@ header .icons i {
     color: red;
 }
 
-.login-form-container form p span {
-    display: none;
-}
-
-.login-form-container form .error p span {
-    display: inline;
-}
-
-#rc-anchor-container,
-.login-form-container .error input {
-    border: 1px solid rgba(255, 0, 0, 0.788) !important;
-    border-radius: 3px;
+.login-form-container input.error {
+    border: 1px solid rgba(255, 0, 0, 0.788);
 }
 
 
@@ -567,25 +560,6 @@ header .icons i {
     color: #666;
 }
 
-.book .row form .inputBox h3>span {
-    display: none;
-    margin-left: .1rem;
-}
-
-.book .row form .inputBox.error h3 {
-    color: rgb(255, 0, 0);
-}
-
-.book .row form .inputBox.error h3>span {
-    display: inline;
-    color: rgb(255, 0, 0);
-}
-
-.book .row form .inputBox.error input {
-    border-color: rgb(255, 0, 0);
-}
-
-.book .row form button.btn,
 .book .row form input.btn {
     margin-top: 0.5rem;
     font-size: 1.5rem;
@@ -595,7 +569,6 @@ header .icons i {
     border: solid .2rem var(--blue);
 }
 
-.book .row form button.btn:hover,
 .book .row form input.btn:hover {
     color: var(--blue);
     background-color: var(--blue-0);
@@ -625,9 +598,6 @@ header .icons i {
     border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .rooms .box-container .box.noactive {
@@ -662,11 +632,6 @@ header .icons i {
     font-size: 2rem;
     color: #333;
 }
-
-
-/* .rooms .box-container .box .content h3 img {
-    position: absolute;
-} */
 
 .rooms .box-container .box .content h3 i {
     color: var(--orange);
@@ -995,12 +960,6 @@ header .icons i {
     }
 }
 
-@media (max-width:1100px) {
-    html {
-        font-size: 57%;
-    }
-}
-
 @media (max-width:991px) {
     header {
         padding: 2rem;
@@ -1053,6 +1012,13 @@ header .icons i {
 
 @media (max-width:450px) {
     html {
-        font-size: 50%;
+        font-size: 40%;
+    }
+    .swiper-slide-next,
+    .swiper-slide-prev {
+        z-index: 100;
+    }
+    .swiper-slide-active {
+        z-index: 1000;
     }
 }
