@@ -1,79 +1,55 @@
-<?php
-require_once('config.php');
-$idbookroomreserve = "";
-$name = "";
-$phone = "";
-$num = "";
-$date = "";
-$idrooms = "";
-$name = mysqli_real_escape_string($conn, $_POST['book_input_name']);
-$phone = mysqli_real_escape_string($conn, $_POST['book_input_phone']);
-$num = mysqli_real_escape_string($conn, $_POST['book_input_num']);
-$date = mysqli_real_escape_string($conn, $_POST['book_input_date']);
-if (isset($_POST['btn_book_submit'])) {
-    if ($name != "") {
-        if ($phone != "") {
-            if (is_numeric($num)) {
-                if (intval($num) > 0) {
-                    if ($date != "") {
-                        if ($date = date_create($date)) {
-                            $idbookroomreserve  = date("YmdHiA") . strtoupper(substr(MD5(rand()), 0, 6));
-                            $sql = "SELECT * FROM dacs2.`bookroom.reserve` WHERE `idbookroom.reserve` = '$idbookroomreserve'";
-                            $rs = mysqli_query($conn, $sql);
-                            /* while (mysqli_num_rows($rs) != 0) {
-                                $idbookroomreserve  = date("YmdHiA") . strtoupper(substr(MD5(rand()), 0, 6));
-                                $sql = "SELECT * FROM dacs2.`bookroom.reserve` WHERE `idbookroom.reserve` = '$idbookroomreserve'";
-                                $rs = mysqli_query($conn, $sql);
-                            } */
-                            $dateymd = date_format($date, "Y-m-d");
-                            if ($idrooms == "") {
-                                $sql = "INSERT INTO `dacs2`.`bookroom.reserve` (`idbookroom.reserve`, `name`, `phone`, `num`, `date`) VALUES ('$idbookroomreserve', '$name', '$phone', '$num', '$dateymd');";
-                                mysqli_query($conn, $sql);
-                            }
-                        } else {
-                            header('location:index.php');
-                 //           echo "date2";
-                            exit;
-                        }
-                    } else {
-                        header('location:index.php');
-               //         echo "date1";
-                        exit;
-                    }
-                } else {
-                     header('location:index.php');
-             //       echo "num2";
-                    exit;
-                }
-            } else {
-                header('location:index.php');
-           //     echo "num1";
-                exit;
-            }
-        } else {
-            header('location:index.php');
-         //   echo "phone";
-            exit;
-        }
-    } else {
-        header('location:index.php');
-       // echo "name";
-        exit;
-    }
-} else {
-    header('location:index.php');
-   // echo "không nhận submit";
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require('head.html') ?>
 <link rel="stylesheet" href="Css/style.bookroom.css">
 
 <body>
-    <?php require('header.html') ?>
+    <?php require('header.html');
+    require_once("config.php");
+    $idbookroomreserve = "";
+    $check = false;
+    if (isset($_GET['id'])) {
+        $idbookroomreserve = mysqli_real_escape_string($conn, $_GET['id']);
+        if ($idbookroomreserve != "") {
+            $sql = "SELECT * FROM dacs2.`bookroom.reserve` WHERE `idbookroom.reserve`='$idbookroomreserve'";
+            $rs = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($rs) == 1) {
+                $row = mysqli_fetch_array($rs);
+                $idbookroomreserve = $row['idbookroom.reserve'];
+                $name = $row['name'];
+                $phone = $row['phone'];
+                $num =   $row['num'];
+                $date = date_create($row['date']);
+                $regidate = date_create($row['regidate']);
+                $idrooms = $row['idrooms'];
+                $check = true;
+            }
+        }
+    } else {
+        header('location:index.php');
+        exit;
+    }
+    if (!$check) {
+    ?>
     <div class="container bookroom" style="margin-top: 100px;">
+        
+        <h1 class="text-center text-danger">
+            Your reservation code does not exist
+        </h1><br>
+        <h3 style="margin-top: 5rem;">
+            Your reservation code : <?php echo $idbookroomreserve  ?>
+        </h3>
+        <a href="index.php" class="btn" style="margin-top: 15rem;">Back <i class="fas fa-reply"></i></a>
+    </div>
+    <?php
+        require('footer.html');
+        echo "</body>
+            </html>";
+        exit;
+    }
+    ?>
+    <div class="container bookroom" style="margin-top: 100px;">
+
         <h1 class="text-center text-info">
             Thank you for your booking
         </h1>
@@ -86,6 +62,11 @@ if (isset($_POST['btn_book_submit'])) {
                     <th class="col-5">Your Reservation code</th>
                     <td class="col-2">:</td>
                     <td class="col-5"><?php echo $idbookroomreserve ?></td>
+                </tr>
+                <tr>
+                    <th class="col-5">Registration Time</th>
+                    <td class="col-2">:</td>
+                    <td class="col-5"><?php echo date_format($regidate, "H:i:s d/m/Y") ?></td>
                 </tr>
                 <tr>
                     <th class="col-5">Your full name</th>
@@ -106,6 +87,11 @@ if (isset($_POST['btn_book_submit'])) {
                     <th class="col-5">Arrival day</th>
                     <td class="col-2">:</td>
                     <td class="col-5"><?php echo date_format($date, "d/m/Y") ?></td>
+                </tr>
+                <tr>
+                    <th class="col-5">Reservation Room Code</th>
+                    <td class="col-2">:</td>
+                    <td class="col-5"><?php echo $idrooms ?></td>
                 </tr>
             </table>
         </div>

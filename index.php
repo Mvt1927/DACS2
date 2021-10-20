@@ -9,6 +9,10 @@ if ($siteKey == '' && is_readable('config.php')) {
     $siteKey = $config['v3']['site'];
     $secret = $config['v3']['secret'];
 }
+$idrooms = "";
+if (isset($_GET['idroom'])) {
+    $idrooms = mysqli_real_escape_string($conn, $_GET['idroom']);
+}
 $date = getdate();
 ?>
 <!DOCTYPE html>
@@ -79,6 +83,7 @@ $date = getdate();
         <div class="video-container">
             <video src="Video/vid-1.mp4" id="video-slider" loop autoplay muted></video>
         </div>
+        
     </section>
     <section class="book" id="book">
         <br>
@@ -97,7 +102,7 @@ $date = getdate();
             <div class="image">
                 <img class="image col-12" src="Image/5244516.png" alt="">
             </div>
-            <form action="bookroom.php" id="form_book_room" method="POST" onsubmit="return checkBook()">
+            <form action="bookroom.back.php" id="form_book_room" method="POST" onsubmit="return checkBook()">
                 <div class="inputBox" id="input_name_box">
                     <h3>What your full name <span>*</span></h3>
                     <input type="text" id="book_input_name" name="book_input_name" placeholder="Your name">
@@ -110,10 +115,17 @@ $date = getdate();
                     <h3>How many</h3>
                     <input type="number" id="book_input_num" name="book_input_num" placeholder="Number of guests" min="1" max="50" value="1">
                 </div>
-                <div class="inputBox">
+                <div class="inputBox" >
                     <h3>Arrivals</h3>
                     <input type="date" id="book_input_date" name="book_input_date"  min="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>" value="<?php echo $date['year'] . '-' . $date['mon'] . '-' . $date['mday'] ?>">
                 </div>
+                <?php
+                    if ($idrooms!=null) {
+                        echo "
+                        <input type=\"hidden\" id=\"book_input_idrooms\" name=\"book_input_idrooms\" value=".$idrooms.">
+                    ";
+                    }
+                ?>
                 <div>
                     <div class="g-recaptcha" data-sitekey="<?php echo $siteKey ?>" data-callback="onSubmit" data-size="invisible"></div>
                 </div>
